@@ -1,0 +1,68 @@
+/* 评审页共用样式。浅 / 深两套主题按 claude 页面约定：裸 :root = 浅色，
+   prefers-color-scheme 暗色 + [data-theme="dark"] 覆盖 token；组件只用 token。
+   组件：.wrap 版心 · .lead 导语 · .finding 结论框 · .ctl 控件条 · section 卡片 · .cols 自适应列 ·
+   figure/figcaption 图 · .view 3D 视口 · .stats 数字行 · details 折叠 · .picker 挑选行 · .chip 状态标签 */
+:root {
+  --bg: #eef0ea;
+  --panel: #fafbf7;
+  --ink: #23271f;
+  --mute: #697063;
+  --line: #d6dacd;
+  --accent: #4d6b2f;
+  --warn: #a5522a;
+  --ground: #7f9a5a;
+  --f-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { color-scheme: dark; --bg: #171a15; --panel: #20241d; --ink: #e5e9df; --mute: #9aa290; --line: #343a2f; --accent: #a5c77c; --warn: #e48b5f; --ground: #56703a; }
+}
+:root[data-theme="dark"] { color-scheme: dark; --bg: #171a15; --panel: #20241d; --ink: #e5e9df; --mute: #9aa290; --line: #343a2f; --accent: #a5c77c; --warn: #e48b5f; --ground: #56703a; }
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink); font: 15px/1.6 var(--f-body); margin: 0;
+  padding-block: 24px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.wrap { max-width: 1240px; margin: 0 auto; display: grid; gap: 22px; }
+header { display: grid; gap: 10px; }
+h1 { margin: 0; font-size: 26px; text-wrap: balance; }
+h2 { margin: 0; font-size: 18px; text-wrap: balance; }
+.lead { margin: 0; color: var(--mute); max-width: 76ch; }
+.note { margin: 0; font-size: 13px; color: var(--mute); max-width: 80ch; }
+.finding { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 16px; display: grid; gap: 6px; max-width: 90ch; }
+.finding p { margin: 0; }
+.ctl { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 14px; color: var(--mute); }
+.ctl label { display: flex; gap: 6px; align-items: center; }
+select, button, textarea { font: 14px var(--f-body); color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; }
+select, button { padding: 4px 10px; cursor: pointer; }
+button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+textarea { width: 100%; min-height: 90px; padding: 10px; font-size: 15px; }
+select:focus-visible, button:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px; display: grid; gap: 12px; }
+section.on { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent) inset; }
+.sub { font-size: 13px; color: var(--mute); margin: -6px 0 0; }
+.cols { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--col, 280px)), 1fr)); align-items: start; }
+figure { margin: 0; display: grid; gap: 6px; }
+figcaption { font-size: 13px; color: var(--mute); }
+figure img { width: 100%; max-width: 100%; border-radius: 6px; display: block; }
+figure img.white { background: #fff; }
+figure img.px { image-rendering: pixelated; }
+.wide { overflow-x: auto; }
+.wide img { display: block; max-width: 100%; border-radius: 6px; border: 1px solid var(--line); }
+.heads { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; font-size: 13px; color: var(--mute); text-align: center; }
+.view { position: relative; background: var(--ground); border-radius: 6px; overflow: hidden; aspect-ratio: 1; }
+.viewbar { display: flex; flex-wrap: wrap; gap: 6px; }
+.viewbar button { font-size: 13px; padding: 2px 8px; }
+.stats { font: 12px var(--f-mono); color: var(--mute); display: flex; flex-wrap: wrap; gap: 6px 18px; font-variant-numeric: tabular-nums; }
+.stats b { color: var(--ink); font-weight: 600; }
+.stats .bad { color: var(--warn); }
+details { border-top: 1px solid var(--line); padding-top: 10px; }
+summary { cursor: pointer; font-size: 14px; }
+.chip { font: 600 12px var(--f-mono); padding: 1px 8px; border-radius: 99px; border: 1px solid var(--line); color: var(--mute); }
+.state { color: var(--mute); font-size: 13px; }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); }
+th { font-weight: 500; color: var(--mute); font-size: 13px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

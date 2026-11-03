@@ -1,0 +1,8 @@
+# Plain-Python tools (05-model-review-tools, 06, 02/tools, 04 rank_samples / arm_anat).
+# Blender scripts use Blender's bundled Python and need nothing from here.
+# Kimodo has its own environment; follow NVIDIA's instructions.
+numpy>=1.26
+scipy>=1.11
+pillow>=10.0
+trimesh>=4.0
+opencv-python-headless>=4.8   # only for 01/tools/scan_view.py --cls / --hsv

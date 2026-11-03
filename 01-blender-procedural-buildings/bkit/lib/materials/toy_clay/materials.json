@@ -1,0 +1,1156 @@
+{
+ "style": "toy_clay",
+ "title": "圆胖玩具 × 黏土",
+ "about": "茅草房 s5_toyclay_1 定稿那套材质（blender_house/build.sh s5：MATS=mats/crop THATCH=band GEO=1）。用户 2026-10-22：\"上一版：茅草带 + 几何质感，其余是生成的贴图 这个还可以\"。",
+ "kinds": {
+  "tile": "平铺贴图：四视图裁一块 → 去明暗 → 做成无缝，按 core.box_uv 每 tile_px 像素铺一张（materials.load(textures=True) 时用）",
+  "band": "一层一条带：绕着茅草层转一圈贴（components.tier_uv），不走 box_uv",
+  "color": "纯色",
+  "procedural": "程序纹理（streaks 竖条 / speckle 斑点，64×64）"
+ },
+ "simple": "每个 tile 材质的 simple = textures=False 时换成的样子（第 1–4 轮的\"纯色 + 少量程序纹理\"，用户 2026-10-22 选的起步方案）；不设 MATS 构建茅草房就是这套",
+ "files": "贴图拷自 blender_house/mats/crop/（2026-10-22 茅草房定稿那批，逐字节相同）；以后重出 mats/crop 不会自动同步到这里，要用新的就再拷一次。这个 json 是材质库本体，加材质 / 改色直接改它",
+ "texel_per_m": 64,
+ "ref_px_per_m": 70.6,
+ "units": "tile_px / band_w = 一张贴图覆盖多少四视图像素 = 贴图尺寸 / texel_per_m × ref_px_per_m（加载时按实际图片尺寸算，这里只是记录；texel_per_m 每个材质可单独写，不写用顶层的）；seam = 横 / 纵接缝比（tile_check.seam_ratio，≤ 1.3 算过；band 竖向不平铺，记 null）；materials 的键 = id（load() 返回的 M[id]），blender = Blender 里的材质名（导出 glTF 的材质名）",
+ "spec_ref": "贴图规格：64 texel/米、最近邻、只画固有色和花纹、不留明暗",
+ "fourview": "pixel_anim/building/cand/fourview3/s5_toyclay_1/（拉齐后的四视图：地面行 632.2、正视图中线 384；约 70.6 像素 / 米）",
+ "palette_source": {
+  "cmd": "palette.py <四视图目录>（原项目取色脚本，未收录）",
+  "how": "四视图上 7×7 小方块取中位数（拷自 blender_house/palette.json；改色改这里，palette.json 只是取色脚本的输出）",
+  "points": {
+   "thatch": [
+    "front",
+    230,
+    380
+   ],
+   "thatch_dark": [
+    "front",
+    300,
+    345
+   ],
+   "plaster": [
+    "back",
+    384,
+    525
+   ],
+   "timber": [
+    "back",
+    200,
+    530
+   ],
+   "stone": [
+    "back",
+    300,
+    605
+   ],
+   "stone_light": [
+    "back",
+    450,
+    590
+   ],
+   "chimney": [
+    "front",
+    260,
+    222
+   ],
+   "door": [
+    "front",
+    330,
+    565
+   ],
+   "frame": [
+    "front",
+    275,
+    520
+   ],
+   "glass": [
+    "front",
+    470,
+    495
+   ],
+   "shutter": [
+    "front",
+    420,
+    505
+   ],
+   "leaf": [
+    "front",
+    455,
+    545
+   ],
+   "petal": [
+    "front",
+    470,
+    533
+   ],
+   "flowerbox": [
+    "front",
+    470,
+    565
+   ],
+   "lantern": [
+    "front",
+    233,
+    500
+   ],
+   "barrel": [
+    "front",
+    225,
+    600
+   ],
+   "hoop": [
+    "front",
+    218,
+    578
+   ],
+   "step": [
+    "front",
+    330,
+    620
+   ]
+  }
+ },
+ "palette": {
+  "thatch": [
+   0.9333,
+   0.6941,
+   0.3294
+  ],
+  "thatch_dark": [
+   0.7882,
+   0.5333,
+   0.2
+  ],
+  "plaster": [
+   0.8706,
+   0.7686,
+   0.6275
+  ],
+  "timber": [
+   0.6118,
+   0.3725,
+   0.1686
+  ],
+  "stone": [
+   0.5725,
+   0.5216,
+   0.4863
+  ],
+  "stone_light": [
+   0.5255,
+   0.4824,
+   0.4471
+  ],
+  "chimney": [
+   0.5804,
+   0.5216,
+   0.4745
+  ],
+  "door": [
+   0.6039,
+   0.3608,
+   0.1529
+  ],
+  "frame": [
+   0.6039,
+   0.3647,
+   0.1608
+  ],
+  "glass": [
+   0.1529,
+   0.302,
+   0.3373
+  ],
+  "shutter": [
+   0.5843,
+   0.3569,
+   0.1569
+  ],
+  "leaf": [
+   0.3569,
+   0.5098,
+   0.149
+  ],
+  "petal": [
+   0.9059,
+   0.8941,
+   0.8275
+  ],
+  "flowerbox": [
+   0.4549,
+   0.2627,
+   0.1098
+  ],
+  "lantern": [
+   0.4,
+   0.4078,
+   0.4078
+  ],
+  "barrel": [
+   0.6078,
+   0.3725,
+   0.1725
+  ],
+  "hoop": [
+   0.5059,
+   0.302,
+   0.1255
+  ],
+  "step": [
+   0.6235,
+   0.5686,
+   0.5137
+  ],
+  "petal_center": [
+   0.9451,
+   0.6902,
+   0.1765
+  ]
+ },
+ "materials": {
+  "thatch": {
+   "kind": "tile",
+   "blender": "x_thatch",
+   "file": "thatch.png",
+   "size": [
+    92,
+    72
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    101.49,
+    79.42
+   ],
+   "seam": [
+    0.76,
+    1.0
+   ],
+   "color": [
+    0.9333,
+    0.6941,
+    0.3294
+   ],
+   "simple": {
+    "kind": "procedural",
+    "blender": "thatch",
+    "image": "t_thatch",
+    "fn": "streaks",
+    "amp": 0.07,
+    "axis": "v",
+    "seed": 1,
+    "size": 64
+   },
+   "source": {
+    "cmd": "blender_house/materials.py crop s5_toyclay_1",
+    "view": "front",
+    "rect": [
+     196,
+     362,
+     312,
+     456
+    ],
+    "what": "第 3、4 层茅草左半边（避开老虎窗和屋顶外的透明背景）",
+    "process": "缩 64/70.6（LANCZOS）→ 去明暗（除以 σ=6 的亮度低频，flatten_light）→ 最小误差切缝做成横竖无缝（tile_rect）"
+   },
+   "use": "老虎窗茅草拱罩；屋顶不用茅草带时的整层茅草；用茅草带时屋脊顶朝上的面（绕圈贴法在顶面会扭成人字纹）",
+   "notes": [
+    "按 box_uv 平铺。用户 2026-10-22：\"四视图的一致性最好，但是效果看起来不够灵动，看不出来是稻草\"——屋顶主体因此改用 thatch_band"
+   ]
+  },
+  "thatch_under": {
+   "kind": "color",
+   "blender": "thatch_under",
+   "color": [
+    0.3941,
+    0.26665,
+    0.1
+   ],
+   "derived": "palette.thatch_dark × 0.5",
+   "use": "茅草层朝下的面（层与层之间那道阴影线，components.roof 按法线 z < −0.75 自动分）",
+   "notes": [
+    "用户 2026-10-22：\"接缝黄黄的，看着不好看\"——原来直接用深茅草色，像一道黄缝，改成深茅草色 × 0.5"
+   ]
+  },
+  "plaster": {
+   "kind": "tile",
+   "blender": "x_plaster",
+   "file": "plaster.png",
+   "size": [
+    213,
+    59
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    234.97,
+    65.08
+   ],
+   "seam": [
+    0.91,
+    0.98
+   ],
+   "color": [
+    0.8706,
+    0.7686,
+    0.6275
+   ],
+   "simple": {
+    "kind": "procedural",
+    "blender": "plaster",
+    "image": "t_plaster",
+    "fn": "speckle",
+    "amp": 0.03,
+    "seed": 2,
+    "size": 64
+   },
+   "source": {
+    "cmd": "blender_house/materials.py crop s5_toyclay_1",
+    "view": "back",
+    "rect": [
+     262,
+     496,
+     508,
+     572
+    ],
+    "what": "背墙空墙（避开角上的斜撑）",
+    "process": "缩 64/70.6（LANCZOS）→ 去明暗（除以 σ=10 的亮度低频，flatten_light）→ 最小误差切缝做成横竖无缝（tile_rect）"
+   },
+   "use": "墙身、老虎窗小屋身"
+  },
+  "timber": {
+   "kind": "tile",
+   "blender": "x_timber",
+   "file": "timber.png",
+   "size": [
+    53,
+    29
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    58.47,
+    31.99
+   ],
+   "seam": [
+    0.58,
+    0.39
+   ],
+   "color": [
+    0.6118,
+    0.3725,
+    0.1686
+   ],
+   "simple": {
+    "kind": "procedural",
+    "blender": "timber",
+    "image": "t_timber",
+    "fn": "streaks",
+    "amp": 0.08,
+    "axis": "v",
+    "seed": 3,
+    "size": 64
+   },
+   "source": {
+    "cmd": "blender_house/materials.py crop s5_toyclay_1",
+    "view": "front",
+    "rect": [
+     303,
+     549,
+     368,
+     588
+    ],
+    "what": "门板下半截（竖木板，避开门把手）",
+    "process": "缩 64/70.6（LANCZOS）→ 去明暗（除以 σ=10 的亮度低频，flatten_light）→ 最小误差切缝做成横竖无缝（tile_rect）"
+   },
+   "use": "木构架：角柱、墙顶横梁、梁头、斜撑",
+   "notes": [
+    "可裁的干净块只有 53×29 texel，平铺看得出重复（材质来源对比页 house_materials 记的已知问题）"
+   ]
+  },
+  "stone": {
+   "kind": "tile",
+   "file": "stone.png",
+   "size": [
+    327,
+    38
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    360.72,
+    41.92
+   ],
+   "seam": [
+    0.64,
+    0.52
+   ],
+   "color": [
+    0.5725,
+    0.5216,
+    0.4863
+   ],
+   "variants": [
+    {
+     "blender": "x_stone0",
+     "tint": 0.92
+    },
+    {
+     "blender": "x_stone1",
+     "tint": 1.0
+    },
+    {
+     "blender": "x_stone2",
+     "tint": 1.08
+    }
+   ],
+   "simple": {
+    "kind": "color",
+    "variants": [
+     {
+      "blender": "stone0",
+      "factor": 0.92
+     },
+     {
+      "blender": "stone1",
+      "factor": 1.0
+     },
+     {
+      "blender": "stone2",
+      "factor": 1.08
+     }
+    ]
+   },
+   "source": {
+    "cmd": "blender_house/materials.py crop s5_toyclay_1",
+    "view": "back",
+    "rect": [
+     200,
+     580,
+     568,
+     630
+    ],
+    "what": "背面石基",
+    "process": "缩 64/70.6（LANCZOS）→ 去明暗（除以 σ=10 的亮度低频，flatten_light）→ 最小误差切缝做成横竖无缝（tile_rect）"
+   },
+   "use": "石基石块（M[\"stone\"] 是三个深浅的列表，每块随机取一个；石基芯、整块石台用中间那个）",
+   "notes": [
+    "同一张贴图乘 0.92 / 1.0 / 1.08 出三个深浅（不用贴图时是纯色 × 同样三个系数）"
+   ]
+  },
+  "chimney": {
+   "kind": "tile",
+   "file": "stone.png",
+   "size": [
+    327,
+    38
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    360.72,
+    41.92
+   ],
+   "color": [
+    0.5804,
+    0.5216,
+    0.4745
+   ],
+   "variants": [
+    {
+     "blender": "x_chim0",
+     "tint": 0.95
+    },
+    {
+     "blender": "x_chim1",
+     "tint": 1.02
+    },
+    {
+     "blender": "x_chim2",
+     "tint": 1.1
+    }
+   ],
+   "simple": {
+    "kind": "color",
+    "variants": [
+     {
+      "blender": "chim0",
+      "factor": 0.9
+     },
+     {
+      "blender": "chim1",
+      "factor": 1.0
+     },
+     {
+      "blender": "chim2",
+      "factor": 1.1
+     }
+    ]
+   },
+   "source": {
+    "same_as": "stone"
+   },
+   "use": "烟囱石块（三个深浅随机取）、烟囱帽用最亮那个",
+   "notes": [
+    "贴图和石基同一张，深浅系数不同：贴图 0.95 / 1.02 / 1.1，纯色 0.9 / 1.0 / 1.1"
+   ]
+  },
+  "dark": {
+   "kind": "color",
+   "blender": "dark",
+   "color": [
+    0.18,
+    0.16,
+    0.15
+   ],
+   "use": "烟囱口；门上窗洞的布尔切刀（切完就删，不留在模型里）"
+  },
+  "void": {
+   "kind": "color",
+   "blender": "void",
+   "color": [
+    0.02,
+    0.018,
+    0.016
+   ],
+   "use": "门洞（门开着看到的屋里）",
+   "notes": [
+    "用户 2026-10-22：\"门的内部应该是黑色阴影\"、\"门打开房子内部看起来还是不够黑啊\"——从深灰褐 0.18 改到接近纯黑"
+   ]
+  },
+  "door": {
+   "kind": "tile",
+   "blender": "x_door",
+   "file": "timber.png",
+   "tint": 1.0,
+   "size": [
+    53,
+    29
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    58.47,
+    31.99
+   ],
+   "color": [
+    0.6039,
+    0.3608,
+    0.1529
+   ],
+   "simple": {
+    "kind": "procedural",
+    "blender": "door",
+    "image": "t_door",
+    "fn": "streaks",
+    "amp": 0.1,
+    "axis": "v",
+    "seed": 4,
+    "size": 64
+   },
+   "source": {
+    "same_as": "timber"
+   },
+   "use": "门扇"
+  },
+  "frame": {
+   "kind": "color",
+   "blender": "frame",
+   "color": [
+    0.6039,
+    0.3647,
+    0.1608
+   ],
+   "use": "门框、窗框、窗棂、老虎窗窗框、门上小窗的压条"
+  },
+  "glass": {
+   "kind": "color",
+   "blender": "glass",
+   "color": [
+    0.1529,
+    0.302,
+    0.3373
+   ],
+   "use": "窗玻璃（正面窗、两侧窗、门上小窗、老虎窗）"
+  },
+  "shutter": {
+   "kind": "tile",
+   "blender": "x_shutter",
+   "file": "timber.png",
+   "tint": 0.95,
+   "size": [
+    53,
+    29
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    58.47,
+    31.99
+   ],
+   "color": [
+    0.5843,
+    0.3569,
+    0.1569
+   ],
+   "simple": {
+    "kind": "procedural",
+    "blender": "shutter",
+    "image": "t_shutter",
+    "fn": "streaks",
+    "amp": 0.1,
+    "axis": "v",
+    "seed": 5,
+    "size": 64
+   },
+   "source": {
+    "same_as": "timber"
+   },
+   "use": "百叶"
+  },
+  "leaf": {
+   "kind": "color",
+   "blender": "leaf",
+   "color": [
+    0.3569,
+    0.5098,
+    0.149
+   ],
+   "use": "花箱叶丛、木桶上的叶丛"
+  },
+  "petal": {
+   "kind": "color",
+   "blender": "petal",
+   "color": [
+    0.9059,
+    0.8941,
+    0.8275
+   ],
+   "use": "花瓣"
+  },
+  "petal_c": {
+   "kind": "color",
+   "blender": "petal_c",
+   "color": [
+    0.9451,
+    0.6902,
+    0.1765
+   ],
+   "use": "花心"
+  },
+  "flowerbox": {
+   "kind": "color",
+   "blender": "flowerbox",
+   "color": [
+    0.4549,
+    0.2627,
+    0.1098
+   ],
+   "use": "窗下花箱"
+  },
+  "metal": {
+   "kind": "color",
+   "blender": "metal",
+   "color": [
+    0.4,
+    0.4078,
+    0.4078
+   ],
+   "use": "壁灯（灯架、灯顶、灯座、竖条）、门把手"
+  },
+  "lamp": {
+   "kind": "color",
+   "blender": "lamp",
+   "color": [
+    0.98,
+    0.85,
+    0.55
+   ],
+   "use": "壁灯灯罩"
+  },
+  "barrel": {
+   "kind": "tile",
+   "blender": "x_barrel",
+   "file": "timber.png",
+   "tint": 1.0,
+   "size": [
+    53,
+    29
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    58.47,
+    31.99
+   ],
+   "color": [
+    0.6078,
+    0.3725,
+    0.1725
+   ],
+   "simple": {
+    "kind": "procedural",
+    "blender": "barrel",
+    "image": "t_barrel",
+    "fn": "streaks",
+    "amp": 0.12,
+    "axis": "v",
+    "seed": 6,
+    "size": 64
+   },
+   "source": {
+    "same_as": "timber"
+   },
+   "use": "木桶桶身"
+  },
+  "hoop": {
+   "kind": "color",
+   "blender": "hoop",
+   "color": [
+    0.27,
+    0.27,
+    0.29
+   ],
+   "use": "木桶铁箍",
+   "notes": [
+    "固定的深灰，没用 palette 里取的 hoop（那个是棕色）"
+   ]
+  },
+  "step": {
+   "kind": "tile",
+   "blender": "x_step",
+   "file": "stone.png",
+   "tint": 1.1,
+   "size": [
+    327,
+    38
+   ],
+   "texel_per_m": 64,
+   "tile_px": [
+    360.72,
+    41.92
+   ],
+   "color": [
+    0.6235,
+    0.5686,
+    0.5137
+   ],
+   "simple": {
+    "kind": "color",
+    "blender": "step"
+   },
+   "source": {
+    "same_as": "stone"
+   },
+   "use": "门前台阶"
+  },
+  "thatch_band": {
+   "kind": "band",
+   "blender": "thatch_band",
+   "file": "thatch_band.png",
+   "normal": "thatch_band_n.png",
+   "size": [
+    388,
+    42
+   ],
+   "texel_per_m": 64,
+   "band_w": 428.01,
+   "seam": [
+    0.76,
+    null
+   ],
+   "color": [
+    0.9333,
+    0.6941,
+    0.3294
+   ],
+   "source": {
+    "cmd": "blender_house/materials.py band s5_toyclay_1",
+    "view": "back",
+    "rect": [
+     162,
+     412,
+     606,
+     458
+    ],
+    "what": "背面檐口层（最下一层）在老虎窗下面那段，横跨整个屋顶不断开",
+    "process": "草尖之间露出的背景填深茅草色 → 缩 64/70.6 → 横向首尾最小误差切缝成环 → 横向明暗拉平、竖向明暗压一半；法线 = 草丝明暗当高度（去掉竖向大趋势）求梯度"
+   },
+   "use": "茅草屋顶每一层（components.roof(band=materials.band())）：u 绕这一层转一圈取整数条、v = 这一层从底到顶（贴图上沿 = 层顶、下沿草尖 = 层底）；朝上的面（屋脊顶）自动换回平铺的 thatch",
+   "notes": [
+    "用户 2026-10-22：\"四视图的一致性最好，但是效果看起来不够灵动，看不出来是稻草\"——整条檐口层茅草裁下来做成一条带，保留\"上沿 → 草丝 → 下沿草尖\"的竖向结构",
+    "用户 2026-10-22：\"稻草的接缝看着怪怪的\"——第一版是正 / 背 / 两侧 6 段拼的，各段纹理和明暗对不上，改成这一整段；每层绕圈的起点错开",
+    "法线贴图可选（materials.band(nmap=True)）；定稿 s5 没开",
+    "定稿 s5 用的就是它：用户 2026-10-22 \"上一版：茅草带 + 几何质感，其余是生成的贴图 这个还可以\""
+   ]
+  },
+  "canvas": {
+   "kind": "tile",
+   "blender": "x_canvas",
+   "file": "canvas.png",
+   "size": [
+    50,
+    54
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.9366,
+    0.8657,
+    0.7586
+   ],
+   "seam": [
+    1.02,
+    0.92
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_tent_1",
+    "view": "right",
+    "rect": [
+     262,
+     150,
+     478,
+     380
+    ],
+    "what": "帐篷侧面帆布中间一块（避开两条缝线）",
+    "px_per_m": 232.69,
+    "process": "缩 64/232.69（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "帐篷蒙布、门帘",
+   "simple": {
+    "kind": "color",
+    "blender": "canvas"
+   }
+  },
+  "wattle": {
+   "kind": "tile",
+   "blender": "x_wattle",
+   "file": "wattle.png",
+   "size": [
+    45,
+    44
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.5022,
+    0.3268,
+    0.1784
+   ],
+   "seam": [
+    0.6,
+    0.49
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_hut_2",
+    "view": "right",
+    "rect": [
+     216,
+     326,
+     340,
+     448
+    ],
+    "what": "窝棚侧墙左半格编条（含一根竖桩；按接缝比最小挑的位置）",
+    "px_per_m": 148.82,
+    "process": "缩 64/148.82（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "窝棚编墙",
+   "simple": {
+    "kind": "color",
+    "blender": "wattle"
+   }
+  },
+  "hut_thatch_band": {
+   "kind": "band",
+   "blender": "x_hut_thatch_band",
+   "file": "hut_thatch_band.png",
+   "size": [
+    108,
+    18
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.8892,
+    0.6107,
+    0.2246
+   ],
+   "seam": [
+    0.81,
+    null
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_hut_2",
+    "view": "right",
+    "rect": [
+     230,
+     203,
+     508,
+     245
+    ],
+    "what": "窝棚屋顶侧面一整排草簇（自下数第二排）",
+    "px_per_m": 148.82,
+    "process": "缩 64/148.82（LANCZOS）→ 去明暗 → 横向首尾无缝、竖向明暗压一半"
+   },
+   "use": "窝棚屋顶：每排绕一圈，竖向 = 一排露出的高度",
+   "simple": {
+    "kind": "color",
+    "blender": "hut_thatch_band"
+   }
+  },
+  "plank": {
+   "kind": "tile",
+   "blender": "x_plank",
+   "file": "plank.png",
+   "size": [
+    91,
+    8
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.8422,
+    0.6184,
+    0.3858
+   ],
+   "seam": [
+    0.85,
+    1.28
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_stockpile_1",
+    "view": "front",
+    "rect": [
+     185,
+     280,
+     570,
+     332
+    ],
+    "what": "储物堆平台顶面木板（正视图里看到的那片，竖向是透视压扁的）",
+    "px_per_m": 255.38,
+    "process": "缩 64/255.38（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "储物堆垫板、雨水桶底座面板、横栏",
+   "simple": {
+    "kind": "color",
+    "blender": "plank"
+   }
+  },
+  "stave": {
+   "kind": "tile",
+   "blender": "x_stave",
+   "file": "stave.png",
+   "size": [
+    42,
+    13
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.7362,
+    0.4571,
+    0.1713
+   ],
+   "seam": [
+    0.47,
+    0.74
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_rainbarrel_2",
+    "view": "front",
+    "rect": [
+     295,
+     165,
+     530,
+     252
+    ],
+    "what": "雨水桶两道铁箍之间的桶板",
+    "px_per_m": 317.0,
+    "process": "缩 64/317.0（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "桶身（竖纹顺着桶板）",
+   "simple": {
+    "kind": "color",
+    "blender": "stave"
+   }
+  },
+  "campstone": {
+   "kind": "tile",
+   "blender": "x_campstone",
+   "file": "campstone.png",
+   "size": [
+    17,
+    9
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.6175,
+    0.5578,
+    0.5039
+   ],
+   "seam": [
+    1.01,
+    0.54
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_campfire_1",
+    "view": "front",
+    "rect": [
+     350,
+     345,
+     460,
+     415
+    ],
+    "what": "营火正前方那块大石头中间",
+    "px_per_m": 313.75,
+    "process": "缩 64/313.75（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "营火围石、石块",
+   "simple": {
+    "kind": "color",
+    "blender": "campstone"
+   }
+  },
+  "bark": {
+   "kind": "tile",
+   "blender": "x_bark",
+   "file": "bark.png",
+   "size": [
+    14,
+    12
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.6622,
+    0.3862,
+    0.1531
+   ],
+   "seam": [
+    0.5,
+    0.83
+   ],
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_fence_2",
+    "view": "front",
+    "rect": [
+     318,
+     262,
+     366,
+     306
+    ],
+    "what": "篱笆第二根桩两道绑绳之间（竖纹）",
+    "px_per_m": 163.75,
+    "process": "缩 64/163.75（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "圆木侧面：桩、横栏、立杆、晾架、窝棚柱",
+   "simple": {
+    "kind": "color",
+    "blender": "bark"
+   }
+  },
+  "log_end": {
+   "kind": "tile",
+   "blender": "x_log_end",
+   "file": "log_end.png",
+   "size": [
+    17,
+    16
+   ],
+   "texel_per_m": 64,
+   "color": [
+    0.6731,
+    0.4585,
+    0.2371
+   ],
+   "seam": null,
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_stockpile_1",
+    "view": "front",
+    "rect": [
+     112,
+     388,
+     178,
+     452
+    ],
+    "what": "储物堆左边垫木的截面（年轮）",
+    "px_per_m": 255.38,
+    "process": "缩 64/255.38（LANCZOS）→ 去明暗 → 不平铺（端面贴片）"
+   },
+   "use": "圆木端面（props.log 的 cap）",
+   "decal": true,
+   "notes": [
+    "端面贴片：props.log(cap=…) 按圆盘贴满一张，不平铺"
+   ],
+   "simple": {
+    "kind": "color",
+    "blender": "log_end"
+   }
+  },
+  "rope": {
+   "kind": "color",
+   "blender": "rope",
+   "color": [
+    0.7804,
+    0.6196,
+    0.4471
+   ],
+   "use": "绑绳、拉绳、挂绳",
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_rack_1",
+    "view": "front",
+    "rect": [
+     271,
+     150,
+     278,
+     175
+    ],
+    "what": "晾架第一条挂绳竖直那段",
+    "how": "方块内中位数"
+   }
+  },
+  "iron": {
+   "kind": "color",
+   "blender": "iron",
+   "color": [
+    0.349,
+    0.3216,
+    0.298
+   ],
+   "use": "桶箍、储物堆螺栓",
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_rainbarrel_2",
+    "view": "front",
+    "rect": [
+     380,
+     128,
+     420,
+     142
+    ],
+    "what": "雨水桶上道铁箍中间（避开铆钉和上沿高光）",
+    "how": "方块内中位数"
+   }
+  },
+  "tent_inside": {
+   "kind": "color",
+   "blender": "tent_inside",
+   "color": [
+    0.2588,
+    0.198,
+    0.1294
+   ],
+   "use": "帐篷 / 窝棚里面（比 void 亮一点的暗褐）",
+   "source": {
+    "cmd": "building/camp_materials.py",
+    "fourview": "camp_tent_1",
+    "view": "front",
+    "rect": [
+     330,
+     250,
+     370,
+     300
+    ],
+    "what": "帐篷门口里面",
+    "how": "方块内中位数"
+   }
+  }
+ },
+ "camp_about": "营地级共用材质（2026-10-22，camp_materials.py）：从营地级各自的四视图裁，换算按建筑表尺寸（camp_measure.py）；营地级按厘米建，加载时 materials.load(units_per_m=100)"
+}

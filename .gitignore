@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Build / run outputs
+out/
+work/
+review/
+*.blend1
+
+# Generated assets and weights: never commit (see README "Not included")
+*.glb
+*.gltf
+*.obj
+*.fbx
+*.blend
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+*.onnx
+*.gif
+*.mp4
+*.webp
+*.png
+*.jpg
+# allow small hand-picked figures for docs (each < 500 KB)
+!docs/img/*.png
+!docs/img/*.jpg
+
+# Secrets
+.env
+.env.*
+*.secrets.env
+*secret*
+*.key
+*.pem
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

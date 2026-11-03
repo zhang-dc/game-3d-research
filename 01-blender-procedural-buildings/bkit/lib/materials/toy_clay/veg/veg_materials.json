@@ -1,0 +1,270 @@
+{
+ "about": "植被专用材质（veg/veg_materials.py 从各自四视图裁；bkit/veg.py 的 veg_materials() 加载，ref_px_per_m=100）",
+ "texel_per_m": 64,
+ "tiles": {
+  "oak_leaf": {
+   "file": "oak_leaf.png",
+   "size": [
+    52,
+    24
+   ],
+   "seam": [
+    0.69,
+    0.67
+   ],
+   "color": [
+    0.3007,
+    0.3848,
+    0.1125
+   ],
+   "source": {
+    "fourview": "veg_tree_oak_1",
+    "view": "front",
+    "rect": [
+     446,
+     201,
+     536,
+     246
+    ],
+    "what": "正视图中间偏右两个叶团交界（避开浅色橡叶）",
+    "px_per_m": 100.6,
+    "process": "缩 64/100.6（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "橡树叶团（canopy_cluster）"
+  },
+  "oak_bark": {
+   "file": "oak_bark.png",
+   "size": [
+    50,
+    41
+   ],
+   "seam": [
+    1.19,
+    0.93
+   ],
+   "color": [
+    0.6192,
+    0.3865,
+    0.1798
+   ],
+   "source": {
+    "fourview": "veg_tree_oak_1",
+    "view": "front",
+    "rect": [
+     350,
+     345,
+     440,
+     420
+    ],
+    "what": "正视图树干中段（树洞左边，竖纹）",
+    "px_per_m": 100.6,
+    "process": "缩 64/100.6（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "橡树树干 / 主枝（trunk / branch）"
+  },
+  "pine_needle": {
+   "file": "pine_needle.png",
+   "size": [
+    43,
+    13
+   ],
+   "seam": [
+    0.69,
+    0.8
+   ],
+   "color": [
+    0.2095,
+    0.3688,
+    0.1762
+   ],
+   "source": {
+    "fourview": "veg_tree_pine_1",
+    "view": "front",
+    "rect": [
+     380,
+     252,
+     470,
+     286
+    ],
+    "what": "正视图第 4 层叶层中段",
+    "px_per_m": 121.2,
+    "process": "缩 64/121.2（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "松树叶层（conifer_tiers）"
+  },
+  "pine_bark": {
+   "file": "pine_bark.png",
+   "size": [
+    20,
+    21
+   ],
+   "seam": [
+    0.62,
+    0.58
+   ],
+   "color": [
+    0.4804,
+    0.2671,
+    0.0962
+   ],
+   "source": {
+    "fourview": "veg_tree_pine_1",
+    "view": "front",
+    "rect": [
+     393,
+     396,
+     441,
+     446
+    ],
+    "what": "正视图树干上段（竖槽）",
+    "px_per_m": 121.2,
+    "process": "缩 64/121.2（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "松树树干"
+  },
+  "bush_foliage": {
+   "file": "bush_foliage.png",
+   "size": [
+    11,
+    8
+   ],
+   "seam": [
+    0.29,
+    0.33
+   ],
+   "color": [
+    0.4734,
+    0.6156,
+    0.1415
+   ],
+   "source": {
+    "fourview": "veg_bush_round_1",
+    "view": "front",
+    "rect": [
+     345,
+     310,
+     430,
+     380
+    ],
+    "what": "正视图正中一片浅叶 + 周围深色叶缝",
+    "px_per_m": 333.6,
+    "process": "缩 64/333.6（LANCZOS）→ 去明暗 → 最小误差切缝做成横竖无缝"
+   },
+   "use": "灌木芯（bush 的叶团）"
+  }
+ },
+ "colors": {
+  "oak_leaf_light": {
+   "color": [
+    0.6039,
+    0.6627,
+    0.1725
+   ],
+   "source": {
+    "fourview": "veg_tree_oak_1",
+    "view": "front",
+    "rect": [
+     436,
+     132,
+     452,
+     148
+    ],
+    "what": "正视图顶上中间那片浅色橡叶",
+    "how": "方块内中位数（sRGB）"
+   },
+   "use": "叶团表面贴的橡叶（leaf shape=oak）"
+  },
+  "oak_knot": {
+   "color": [
+    0.4843,
+    0.302,
+    0.1392
+   ],
+   "source": {
+    "fourview": "veg_tree_oak_1",
+    "view": "front",
+    "rect": [
+     452,
+     352,
+     460,
+     364
+    ],
+    "what": "正视图树洞里面",
+    "how": "方块内中位数（sRGB）"
+   },
+   "use": "树洞里面（knothole）"
+  },
+  "bush_leaf_light": {
+   "color": [
+    0.5961,
+    0.7373,
+    0.2118
+   ],
+   "source": {
+    "fourview": "veg_bush_round_1",
+    "view": "front",
+    "rect": [
+     "pct",
+     85
+    ],
+    "what": "整张正视图第 85 百分位（顶上的浅叶）",
+    "how": "不透明像素第 85 百分位（sRGB）"
+   },
+   "use": "灌木叶片上层"
+  },
+  "bush_leaf_mid": {
+   "color": [
+    0.4157,
+    0.5843,
+    0.149
+   ],
+   "source": {
+    "fourview": "veg_bush_round_1",
+    "view": "front",
+    "rect": [
+     "pct",
+     50
+    ],
+    "what": "整张正视图中位数",
+    "how": "不透明像素第 50 百分位（sRGB）"
+   },
+   "use": "灌木叶片中层"
+  },
+  "bush_leaf_dark": {
+   "color": [
+    0.298,
+    0.4588,
+    0.1098
+   ],
+   "source": {
+    "fourview": "veg_bush_round_1",
+    "view": "front",
+    "rect": [
+     "pct",
+     25
+    ],
+    "what": "整张正视图第 25 百分位（下层叶）",
+    "how": "不透明像素第 25 百分位（sRGB）"
+   },
+   "use": "灌木叶片下层"
+  },
+  "bush_core": {
+   "color": [
+    0.2,
+    0.3333,
+    0.0784
+   ],
+   "source": {
+    "fourview": "veg_bush_round_1",
+    "view": "front",
+    "rect": [
+     "pct",
+     10
+    ],
+    "what": "整张正视图第 10 百分位（叶缝里的深绿）",
+    "how": "不透明像素第 10 百分位（sRGB）"
+   },
+   "use": "灌木芯（叶团）"
+  }
+ }
+}
