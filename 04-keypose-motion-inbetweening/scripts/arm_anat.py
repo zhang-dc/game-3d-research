@@ -1,6 +1,6 @@
 """第 3 轮：按人体关节限制解手臂（numpy 向量化，在 Blender 里 import）。
 
-farmer 骨架（UAL）rest = T 姿势、手掌朝前；Shoulder→Arm→ForeArm→Hand 的 rest 相对旋转都是单位阵，骨 Y 沿骨。
+UAL 骨架rest = T 姿势、手掌朝前；Shoulder→Arm→ForeArm→Hand 的 rest 相对旋转都是单位阵，骨 Y 沿骨。
 走 / 跑样本实测：肘只绕本地 Z 轴弯（右 −Z、左 +Z，前臂往前收），手腕相对前臂 ≤30°。
 
 给定手骨朝向 H 和 socket 目标（→ 腕位置 w），肩点 s 固定，肘在以 s–w 为轴的圆上（swivel φ）。对每个 φ：

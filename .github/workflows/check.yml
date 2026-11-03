@@ -1,0 +1,24 @@
+name: check
+on: [push, pull_request]
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Python syntax
+        run: python -m compileall -q .
+      - name: JavaScript syntax
+        run: for f in $(git ls-files '*.js'); do node --check "$f"; done
+      - name: Shell syntax
+        run: for f in $(git ls-files '*.sh'); do bash -n "$f"; done
+      - name: JSON
+        run: for f in $(git ls-files '*.json'); do python -m json.tool "$f" > /dev/null; done
+      - name: No local paths or secrets
+        run: |
+          ! git grep -n -I -E '/mnt/[a-z]/|[A-Z]:[\/](Users|ai)[\/]|~/\.venvs|BEGIN [A-Z ]*PRIVATE KEY|ghp_[A-Za-z0-9]{20,}|sk-[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}' -- ':!.github'

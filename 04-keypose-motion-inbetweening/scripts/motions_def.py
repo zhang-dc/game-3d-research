@@ -14,7 +14,7 @@ events：[(事件名, 姿势名)]，事件时刻 = 该姿势的关键帧。
 
 MOTIONS = {}
 
-# ---------------------------------------------------------------- 横砍（用户认可：s1 / s2） ----------------------------------------------------------------
+# ---------------------------------------------------------------- 横砍（评审认可：s1 / s2） ----------------------------------------------------------------
 MOTIONS['chop_side'] = dict(
     tool=dict(kind='pv_axe', two_handed=True, v=(1, 0, 0)), loop=True, period=[1.25, 1.35],
     stance={'Left': (0.04, 0.10, 0), 'Right': (-0.04, -0.10, 0)},
@@ -29,7 +29,7 @@ MOTIONS['chop_side'] = dict(
                 text='A person chops a tree trunk with an axe held in both hands, using powerful horizontal swings: '
                      'twisting the torso to the right to wind up, then swinging hard from right to left at waist height, again and again.'))
 
-# ---------------------------------------------------------------- 钓鱼（用户认可：s2 / s3） ----------------------------------------------------------------
+# ---------------------------------------------------------------- 钓鱼（评审认可：s2 / s3） ----------------------------------------------------------------
 _fish = [
     dict(name='ready', hold=0.5, hips_yaw=0, spine_yaw=0, lean=4, hip_shift=(0, 0, -0.02), head_yaw=0, hand=(-0.08, 0.28, -0.30), z=(0, 45), t='down'),
     dict(name='backcast', hold=0.4, hips_yaw=10, spine_yaw=10, lean=-6, hip_shift=(-0.03, -0.03, -0.01), head_yaw=-5, hand=(-0.16, 0.06, 0.10), z=(0, 115), t='down'),

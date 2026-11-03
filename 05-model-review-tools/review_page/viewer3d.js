@@ -83,7 +83,7 @@
 
     set(p) { Object.assign(this.o, p); if ('light' in p && this.model) this._materials(); if ('wire' in p && this.model) this._wire(); this._draw(); }
 
-    /** 三角形网格线（2026-10-24 用户："我能不能看到三角形网格"）：每个网格叠一层 WireframeGeometry 线框，随部件 / 施工阶段一起显隐 */
+    /** 三角形网格线（2026-10-24 评审："我能不能看到三角形网格"）：每个网格叠一层 WireframeGeometry 线框，随部件 / 施工阶段一起显隐 */
     _wire() {
       this.model.traverse((n) => {
         if (!n.isMesh) return;

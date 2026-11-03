@@ -1,6 +1,6 @@
 """建筑套件 · 核心：单位与坐标、几何小工具、可动部件、施工阶段标记、导出（Blender 里 import）。
 
-坐标约定（用户 2026-10-22 定的"四视图为准，Pixal3D 成品辅助"：尺寸全按拉齐后的四视图量，单位 = 四视图像素）：
+坐标约定（评审 2026-10-22 定的"四视图为准，Pixal3D 成品辅助"：尺寸全按拉齐后的四视图量，单位 = 四视图像素）：
   P(E, S, U)：E = 正视图向右、S = 朝正面相机、U = 离地高度。1 像素 = K = 0.01 Blender 单位（四视图约 70.6 像素 / 米）。
   Blender 里 x = −E、y = S、z = U；导出 glTF 后是 (−E, U, −S)，和 Pixal3D 的 GLB 一个朝向（预览时绕 Y 转 180° 正面朝相机）。
   范围参数一律 (min, max) 像素。box / cylinder / blob / arch_panel / brace 直接按世界坐标出顶点（物体原点 = 世界原点），
@@ -133,7 +133,7 @@ def blob(name, c, rx, ry, rz, m, sub=2):
 
 def arch_panel(name, E, U, S, m, arch=True, seg=10):
     """拱形板：正视轮廓 = 矩形 + 上面半圆（arch=False 只要矩形），沿 S 从 S[0] 挤到 S[1]。
-    挤出时保留原面当背面——用户 2026-10-22："门没有建模背面"（之前挤出把原面删了，门板 / 老虎窗窗框背面是空的）。"""
+    挤出时保留原面当背面——评审 2026-10-22："门没有建模背面"（之前挤出把原面删了，门板 / 老虎窗窗框背面是空的）。"""
     e0, e1 = E
     w = (e1 - e0) / 2
     ec = (e0 + e1) / 2
@@ -193,7 +193,7 @@ def created_since(before):
 
 
 def make_part(pid, objs, hinge, d, n, angle):
-    """会动的部件单独成件——用户 2026-10-22："门应该单独建模""可活动的部件都应该单独建模"。
+    """会动的部件单独成件——评审 2026-10-22："门应该单独建模""可活动的部件都应该单独建模"。
     objs 合成一个物体 part.<pid>，原点放转轴 hinge（Blender 坐标，用 P() 给），绕竖直轴开 0 → ±angle 度；
     方向由"门扇朝向 d、屋外方向 n"（Blender xy 平面里的二维向量）定：绕 +z 转正角时 d 往 z×d 走，(z×d)·n > 0 取正。
     extras：axis = 'z'、range = [0, ±angle]、stage = 'done'（预览器 / 引擎的部件约定，见 05-model-review-tools/review_page/viewer3d.js）。

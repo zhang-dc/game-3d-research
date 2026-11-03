@@ -1,5 +1,5 @@
 """建筑套件 bkit：Blender 程序建模建筑时复用的材质库 + 组件库（Blender 自带的 Python 里 import）。
-用户 2026-10-22："最好形成可以复用的材质和组件，方便建模时复用"。第一个用它的是茅草房 blender_house/house_s5.py（s5 定稿）。
+评审 2026-10-22："最好形成可以复用的材质和组件，方便建模时复用"。第一个用它的是茅草房 blender_house/house_s5.py（s5 定稿）。
 
     import random, sys
     sys.path.insert(0, '<repo>/01-blender-procedural-buildings')

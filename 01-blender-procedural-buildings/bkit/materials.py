@@ -1,8 +1,8 @@
-"""建筑套件 · 材质库（Blender 里 import）。用户 2026-10-22："最好形成可以复用的材质和组件，方便建模时复用"。
+"""建筑套件 · 材质库（Blender 里 import）。评审 2026-10-22："最好形成可以复用的材质和组件，方便建模时复用"。
 
 一种风格一个目录：lib/materials/<风格>/materials.json + 贴图。现在有 toy_clay（圆胖玩具 × 黏土，茅草房 s5 定稿那套）。
 materials.json 里每个材质写着 kind（tile 平铺贴图 / band 茅草带 / color 纯色 / procedural 程序纹理）、贴图文件、颜色、
-一张贴图覆盖多少四视图像素、来源（blender_house/materials.py 哪个子命令、从哪张视图哪块裁）、用在哪、用户怎么说的。
+一张贴图覆盖多少四视图像素、来源（blender_house/materials.py 哪个子命令、从哪张视图哪块裁）、用在哪、评审怎么说的。
 
     M = materials.load('toy_clay')                    # 定稿那套：平铺贴图 + 纯色
     M = materials.load('toy_clay', textures=False)    # 第 1–4 轮的"纯色 + 少量程序纹理"
@@ -86,7 +86,7 @@ def srgb_to_linear(c):
 def mat(name, color=None, tex=None):
     """Principled BSDF，粗糙度 0.9；有 tex 用贴图（最近邻）当底色，没有用纯色 color（[r, g, b]）。同名只建一次。
     颜色：SRGB_COLORS 打开时按 sRGB 转线性（2026-10-22 营地级核查：直接把 sRGB 取色填进线性槽，打光后偏浅发灰，螺栓成了白点）；
-    茅草房定稿没开（颜色按原样，改要用户定）。"""
+    茅草房定稿没开（颜色按原样，改要评审定）。"""
     if name in _MATS:
         return _MATS[name]
     if color is not None and SRGB_COLORS:
